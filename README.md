@@ -8,6 +8,7 @@ The following programs are compiled:
 - [python-static](https://github.com/ading2210/python-static)
 - [fusermount](https://github.com/libfuse/libfuse)
 - [swtpm](https://github.com/stefanberger/swtpm)
+- [unionfs-fuse](https://github.com/rpodgorny/unionfs-fuse)
 
 ## Example:
 ```
@@ -15,12 +16,12 @@ sudo ./build.sh
 ```
 
 ```
-$ du -sh out/*
 2.0M    out/cryptsetup
 92K     out/fusermount3
 4.4M    out/lklfuse
 5.4M    out/python3
 1.8M    out/swtpm
+516K    out/unionfs
 ```
 
 ```
@@ -34,6 +35,8 @@ out/lklfuse:
 out/python3:
         not a dynamic executable
 out/swtpm:
+        not a dynamic executable
+out/unionfs:
         not a dynamic executable
 ```
 

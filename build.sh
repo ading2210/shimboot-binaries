@@ -44,3 +44,6 @@ fi
 if [ ! -f "$out_dir/swtpm" ]; then
   "$chroot_dir/enter-chroot" ./packages/swtpm.sh
 fi
+if [ ! -f "$out_dir/unionfs" ]; then
+  "$chroot_dir/enter-chroot" ./packages/unionfs.sh
+fi

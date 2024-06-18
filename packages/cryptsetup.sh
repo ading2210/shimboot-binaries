@@ -1,6 +1,3 @@
-#https://gitlab.com/cryptsetup/cryptsetup
-#./configure --enable-static-cryptsetup --enable-static --disable-shared --disable-asciidoc --prefix=$(realpath prefix)
-
 #!/bin/bash
 
 . ./common.sh
