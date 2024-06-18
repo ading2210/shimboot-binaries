@@ -9,8 +9,8 @@ for file_name in $file_list; do
   files_str+="- $file_name ($file_size)"$'\n'
 done
 
+mkdir -p "$misc_dir"
 tar -czf "$misc_dir/shimboot-binaries.tar.gz" -C "$out_dir" $(ls "$out_dir")
 
-mkdir -p "$misc_dir"
 echo "This release contains:
 $files_str" > "$misc_dir/release_notes.txt"
