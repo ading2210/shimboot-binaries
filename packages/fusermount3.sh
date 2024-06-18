@@ -4,9 +4,7 @@
 cd "$build_dir"
 
 if [ ! -d "libfuse" ]; then
-  if [ ! -f "libfuse-master.zip" ]; then
-    wget "https://github.com/libfuse/libfuse/archive/refs/heads/master.zip" -O libfuse-master.zip
-  fi
+  wget "https://github.com/libfuse/libfuse/archive/refs/heads/master.zip" -O libfuse-master.zip
   unzip -q libfuse-master.zip
   rm libfuse-master.zip
   mv libfuse-master libfuse

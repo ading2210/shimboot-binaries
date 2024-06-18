@@ -4,9 +4,7 @@
 cd "$build_dir"
 
 if [ ! -d "linux" ]; then
-  if [ ! -f "linux-master.zip" ]; then
-    wget "https://codeload.github.com/lkl/linux/zip/refs/heads/master" -O linux-master.zip
-  fi
+  wget "https://codeload.github.com/lkl/linux/zip/refs/heads/master" -O linux-master.zip
   unzip -q linux-master.zip
   rm linux-master.zip
   mv linux-master linux

@@ -15,7 +15,8 @@ alpine_deps="
   autoconf gettext gettext-dev libtool automake argp-standalone \
   util-linux-dev util-linux-static lvm2-dev lvm2-static \
   popt-static popt-dev json-c-dev libssh-dev gettext-static \
-  openssl-libs-static
+  openssl-libs-static libtasn1-dev libtpms-dev libtpms \
+  json-glib-dev gmp-dev glib-static pcre2
 "
 if [ ! -d "$chroot_dir" ]; then
   mkdir -p "$chroot_dir"
@@ -39,4 +40,7 @@ if [ ! -f "$out_dir/python3" ]; then
 fi
 if [ ! -f "$out_dir/cryptsetup" ]; then
   "$chroot_dir/enter-chroot" ./packages/cryptsetup.sh
+fi
+if [ ! -f "$out_dir/swtpm" ]; then
+  "$chroot_dir/enter-chroot" ./packages/swtpm.sh
 fi
