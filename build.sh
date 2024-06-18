@@ -16,7 +16,7 @@ alpine_deps="
   util-linux-dev util-linux-static lvm2-dev lvm2-static \
   popt-static popt-dev json-c-dev libssh-dev gettext-static \
   openssl-libs-static libtasn1-dev libtpms-dev libtpms \
-  json-glib-dev gmp-dev glib-static pcre2
+  json-glib-dev gmp-dev glib-static pcre2 device-mapper-static
 "
 if [ ! -d "$chroot_dir" ]; then
   mkdir -p "$chroot_dir"
