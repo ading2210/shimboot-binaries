@@ -1,0 +1,4 @@
+[submodule "packages/python-static"]
+	path = packages/python-static
+	url = https://github.com/ading2210/python-static
+	branch = alpine-build
