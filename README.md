@@ -12,10 +12,11 @@ The following programs are compiled:
 
 ## Example:
 ```
-sudo ./build.sh
+$ sudo ./build.sh
 ```
 
 ```
+$ du out/*
 2.0M    out/cryptsetup
 92K     out/fusermount3
 4.4M    out/lklfuse

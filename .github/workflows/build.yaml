@@ -1,0 +1,26 @@
+name: build
+run-name: Build the static binaries
+on: [push]
+
+jobs:
+  build:
+    permissions:
+      contents: write
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: download repo
+        uses: actions/checkout@v4
+      
+      - name: run build
+        run: |
+          sudo ./build.sh
+          sudo ./release.sh
+  
+      - name: create release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body_path: misc/release_notes.txt
+          draft: true
+          files: misc/shimboot-binaries.tar.gz
