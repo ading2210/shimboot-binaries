@@ -2,9 +2,6 @@
 
 . ./common.sh
 
-set -e
-set -x
-
 if [ "$EUID" -ne 0 ]; then 
   echo "this needs to be run as root"
   exit 1
@@ -14,12 +11,17 @@ alpine_script_url="https://raw.githubusercontent.com/alpinelinux/alpine-chroot-i
 alpine_deps="
   bash wget unzip flex bison upx python3 make gcc libc-dev \
   fuse3-static fuse3-dev meson linux-headers readline-dev \
-  zlib-dev libffi-dev zlib-static readline-static ncurses-static
+  zlib-dev libffi-dev zlib-static readline-static ncurses-static \
+  autoconf gettext gettext-dev libtool automake argp-standalone \
+  util-linux-dev util-linux-static lvm2-dev lvm2-static \
+  popt-static popt-dev json-c-dev libssh-dev gettext-static \
+  openssl-libs-static
 "
 if [ ! -d "$chroot_dir" ]; then
   mkdir -p "$chroot_dir"
   wget "$alpine_script_url" -O "$chroot_dir/alpine-chroot-install"
   chmod +x "$chroot_dir/alpine-chroot-install"
+  "$chroot_dir/alpine-chroot-install" -d "$chroot_dir"
   "$chroot_dir/enter-chroot" apk add --no-cache --update --repository=https://dl-cdn.alpinelinux.org/alpine/v3.16/main/ libexecinfo-dev
 fi
 "$chroot_dir/enter-chroot" apk add $alpine_deps
@@ -34,4 +36,7 @@ if [ ! -f "$out_dir/fusermount3" ]; then
 fi
 if [ ! -f "$out_dir/python3" ]; then
   "$chroot_dir/enter-chroot" ./packages/python3.sh
+fi
+if [ ! -f "$out_dir/cryptsetup" ]; then
+  "$chroot_dir/enter-chroot" ./packages/cryptsetup.sh
 fi
