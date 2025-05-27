@@ -8,6 +8,7 @@ if [ ! -d "libfuse" ]; then
   unzip -q libfuse-master.zip
   rm libfuse-master.zip
   mv libfuse-master libfuse
+  #rm -rf libfuse/
 fi
 
 cd libfuse
@@ -17,6 +18,7 @@ meson setup ..
 meson configure --default-library static \
   -D buildtype=release \
   -D prefer_static=true \
+  -D examples=false \
   -D c_link_args="-static -s -flto" \
   -D cpp_link_args="-static -s -flto" 
 ninja

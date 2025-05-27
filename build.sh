@@ -22,7 +22,7 @@ if [ ! -d "$chroot_dir" ]; then
   mkdir -p "$chroot_dir"
   wget "$alpine_script_url" -O "$chroot_dir/alpine-chroot-install"
   chmod +x "$chroot_dir/alpine-chroot-install"
-  "$chroot_dir/alpine-chroot-install" -d "$chroot_dir"
+  "$chroot_dir/alpine-chroot-install" -d "$chroot_dir" -a $(uname -m)
   "$chroot_dir/enter-chroot" apk add --no-cache --update --repository=https://dl-cdn.alpinelinux.org/alpine/v3.16/main/ libexecinfo-dev
 fi
 "$chroot_dir/enter-chroot" apk add $alpine_deps

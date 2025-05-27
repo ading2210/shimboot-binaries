@@ -1,5 +1,5 @@
-name: build
-run-name: Build the static binaries
+name: build-arm
+run-name: Build the static binaries (arm64)
 on: [push]
 
 jobs:
@@ -7,7 +7,7 @@ jobs:
     permissions:
       contents: write
 
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     steps:
       - name: download repo
         uses: actions/checkout@v4
@@ -16,6 +16,8 @@ jobs:
       
       - name: run build
         run: |
+          sudo apt-get update
+          sudo apt-get install -y qemu-user-static
           sudo ./build.sh
           sudo ./release.sh
   
@@ -23,6 +25,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          body_path: misc/release_notes_amd64.txt
           draft: true
-          files: misc/shimboot_binaries*
+          files: misc/shimboot-binaries*
