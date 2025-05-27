@@ -17,7 +17,7 @@ if [ ! "$(cat include/lkl.h | grep "sys/types.h" )" ]; then
 fi
 
 #disable problematic files - these refuse to compile in alpine 
-sed -i '/progs-y += tests\/test-dlmopen/d' Targets
+sed -i '/tests-y/d' Targets
 sed -i '/hijack/d' Targets
 
 make all -j$(nproc --all)
