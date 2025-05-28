@@ -26,4 +26,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           draft: true
-          files: misc/shimboot-binaries*
+          files: misc/shimboot_binaries*
